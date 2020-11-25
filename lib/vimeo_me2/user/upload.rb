@@ -27,9 +27,9 @@ module VimeoMe2
         post '/videos', body: body, code: 201
       end
 
-      def upload_video_url size
+      def upload_video_url size, redirect_url = nil
         @video = {size: size}
-        create_video
+        create_video redirect_url
       end
 
       private
@@ -46,8 +46,8 @@ module VimeoMe2
         end
 
         # 3.4 Update
-        def create_video
-          tus = {approach: 'tus', size: @video.size.to_s}
+        def create_video redirect_url = nil
+          tus = {approach: 'tus', size: @video.size.to_s, redirect_url: redirect_url}
           body = {upload: tus}
           post '/videos', body: body, code: 200
         end
