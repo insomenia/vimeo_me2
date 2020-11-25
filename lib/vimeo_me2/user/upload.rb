@@ -27,6 +27,11 @@ module VimeoMe2
         post '/videos', body: body, code: 201
       end
 
+      def upload_video_url size
+        @video = {size: size}
+        create_video
+      end
+
       private
 
         def change_name_and_get_video name = nil
