@@ -28,7 +28,7 @@ module VimeoMe2
       end
 
       def upload_video_url size
-        @video = {size: size}
+        @video = OpenStruct.new(size: size)
         create_video 
       end
 
