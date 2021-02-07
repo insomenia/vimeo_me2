@@ -47,17 +47,13 @@ module VimeoMe2
     end
 
     def privacy= privacy_options
-      merged_options = privacy.merge! privacy_options
-      byebug
-      @video['privacy'] = merged_options
+      privacy.merge! privacy_options
     end
 
     def update
       body = @video
       # temporary fix, because API does not accept privacy in request
       # body.delete('privacy')
-      puts body
-      Rails.logger.info body
       body.delete('type')
       patch(nil, body:body, code:[200,204])
     end
