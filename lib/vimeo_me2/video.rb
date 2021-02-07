@@ -46,31 +46,14 @@ module VimeoMe2
       @video['password'] = password
     end
 
-    def download
-      @video['download']
-    end
-
-    def download= download
-      @video['download'] = download
-    end
-
-    def embed
-      @video['embed']
-    end
-
-    def embed= embed
-      @video['embed'] = embed
-    end
-
     def privacy= privacy_options
-      merged_options = privacy.merge! privacy_options
-      @video['privacy'] = merged_options
+      privacy.merge! privacy_options
     end
 
     def update
       body = @video
       # temporary fix, because API does not accept privacy in request
-      body.delete('privacy')
+      # body.delete('privacy')
       body.delete('type')
       patch(nil, body:body, code:[200,204])
     end
