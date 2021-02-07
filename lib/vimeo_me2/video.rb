@@ -46,6 +46,22 @@ module VimeoMe2
       @video['password'] = password
     end
 
+    def download
+      @video['download']
+    end
+
+    def download= download
+      @video['download'] = download
+    end
+
+    def embed
+      @video['embed']
+    end
+
+    def embed= embed
+      @video['embed'] = embed
+    end
+
     def privacy= privacy_options
       privacy.merge! privacy_options
     end
